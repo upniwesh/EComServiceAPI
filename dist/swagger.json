@@ -1,0 +1,395 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"description": "Bavian APP rest API",
+		"license": {
+			"name": "MIT"
+		},
+		"title": "Bavian",
+		"version": "0.0.1"
+	},
+	"paths": {
+		"/order/create": {
+			"post": {
+				"operationId": "OrderCreateOrder",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"order"
+				],
+				"security": [
+					{
+						"default": []
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/OrderModel"
+							}
+						}
+					},
+					"required": true
+				}
+			}
+		},
+		"/order/getAllOrderByUser": {
+			"get": {
+				"operationId": "OrderGetAllOrderByUserController",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"order"
+				],
+				"security": [
+					{
+						"default": []
+					}
+				]
+			}
+		},
+		"/order/getById": {
+			"get": {
+				"operationId": "OrderGetOrderByIdController",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"order"
+				],
+				"security": [
+					{
+						"default": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "OrderId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/Product/create": {
+			"post": {
+				"operationId": "ProductCreateProduct",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"Product"
+				],
+				"security": [
+					{
+						"default": []
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ProductModel"
+							}
+						}
+					},
+					"required": true
+				}
+			}
+		},
+		"/Product/getAll": {
+			"get": {
+				"operationId": "ProductGetAllProductController",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"Product"
+				],
+				"security": [
+					{
+						"default": []
+					}
+				]
+			}
+		},
+		"/Product/getById": {
+			"get": {
+				"operationId": "ProductGetProductByIdController",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"Product"
+				],
+				"security": [
+					{
+						"default": []
+					}
+				],
+				"parameters": [
+					{
+						"description": "",
+						"in": "query",
+						"name": "productId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/user/login": {
+			"post": {
+				"operationId": "UserVerifyUserController",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"Account"
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserLogInModel"
+							}
+						}
+					},
+					"required": true
+				}
+			}
+		},
+		"/user/register": {
+			"post": {
+				"operationId": "UserRegisterUserController",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "",
+				"tags": [
+					"Account"
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UserRegisterModel"
+							}
+						}
+					},
+					"required": true
+				}
+			}
+		}
+	},
+	"components": {
+		"securitySchemes": {
+			"default": {
+				"type": "apiKey",
+				"in": "header",
+				"name": "Authorization"
+			},
+			"secondAuthenticator": {
+				"type": "apiKey",
+				"in": "header",
+				"name": "Authorization"
+			}
+		},
+		"schemas": {
+			"OrderModel": {
+				"description": "",
+				"properties": {
+					"productId": {
+						"type": "number",
+						"format": "double",
+						"description": ""
+					},
+					"userId": {
+						"type": "number",
+						"format": "double",
+						"description": ""
+					},
+					"productQuantity": {
+						"type": "number",
+						"format": "double",
+						"description": ""
+					}
+				},
+				"type": "object",
+				"required": [
+					"productId",
+					"userId",
+					"productQuantity"
+				]
+			},
+			"ProductModel": {
+				"description": "",
+				"properties": {
+					"productName": {
+						"type": "string",
+						"description": ""
+					},
+					"productDescription": {
+						"type": "string",
+						"description": ""
+					},
+					"productPrice": {
+						"type": "string",
+						"description": ""
+					},
+					"productLaunchedYear": {
+						"type": "number",
+						"format": "double",
+						"description": ""
+					}
+				},
+				"type": "object",
+				"required": [
+					"productName",
+					"productDescription",
+					"productPrice",
+					"productLaunchedYear"
+				]
+			},
+			"UserLogInModel": {
+				"description": "",
+				"properties": {
+					"email": {
+						"type": "string",
+						"description": ""
+					},
+					"password": {
+						"type": "string",
+						"description": ""
+					}
+				},
+				"type": "object",
+				"required": [
+					"email",
+					"password"
+				]
+			},
+			"UserRegisterModel": {
+				"description": "",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": ""
+					},
+					"email": {
+						"type": "string",
+						"description": ""
+					},
+					"phoneNo": {
+						"type": "string",
+						"description": ""
+					},
+					"password": {
+						"type": "string",
+						"description": ""
+					},
+					"address": {
+						"type": "string",
+						"description": ""
+					}
+				},
+				"type": "object",
+				"required": [
+					"name",
+					"email",
+					"phoneNo",
+					"password",
+					"address"
+				]
+			}
+		}
+	}
+}
